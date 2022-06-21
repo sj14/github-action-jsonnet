@@ -18,6 +18,18 @@
             {
                "name": "Check Go modules",
                "run": "set -xu\ngo mod verify\ngo mod tidy\ngit diff --exit-code\n"
+            },
+            {
+               "name": "Run Go tests",
+               "run": "set -xu\ngo test ./...\n"
+            },
+            {
+               "name": "Run golangci linting",
+               "uses": "golangci/golangci-lint-action@v3.2.0",
+               "with": {
+                  "skip-cache": true,
+                  "version": "v1.46.2"
+               }
             }
          ]
       }
