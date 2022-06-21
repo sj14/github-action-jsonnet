@@ -1,6 +1,6 @@
 {
    "jobs": {
-      "go-test": {
+      "go-tests": {
          "runs-on": "self-hosted",
          "steps": [
             {
@@ -14,6 +14,10 @@
                   "cache-dependency-path": "go.sum",
                   "go-version": "1.18"
                }
+            },
+            {
+               "name": "Check Go modules",
+               "run": "set -xu\ngo mod verify\ngo mod tidy\ngit diff --exit-code\n"
             }
          ]
       }
@@ -22,7 +26,8 @@
    "on": {
       "push": {
          "paths": [
-            "**.js"
+            "**",
+            "**"
          ]
       }
    }
