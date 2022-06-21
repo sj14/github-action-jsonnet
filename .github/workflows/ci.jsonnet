@@ -22,7 +22,7 @@ local step_check_go_modules() = {
     |||
 };
 
-local job_go_tests(runs_on=null,) = {
+local job_go_tests(runs_on="ubuntu-22.04",) = {
     "go-tests": {
         "runs-on": runs_on,
         steps: [

@@ -1,7 +1,7 @@
 {
    "jobs": {
       "go-tests": {
-         "runs-on": null,
+         "runs-on": "ubuntu-22.04",
          "steps": [
             {
                "name": "Checkout repository",
