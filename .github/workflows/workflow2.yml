@@ -1,0 +1,45 @@
+{
+   "jobs": {
+      "go-tests": {
+         "runs-on": "ubuntu-22.04",
+         "steps": [
+            {
+               "name": "Checkout repository",
+               "uses": "actions/checkout@v2"
+            },
+            {
+               "uses": "actions/setup-go@v3",
+               "with": {
+                  "cache": true,
+                  "cache-dependency-path": "go.sum",
+                  "go-version": "1.18"
+               }
+            },
+            {
+               "name": "Check Go modules",
+               "run": "set -xu\ngo mod verify\ngo mod tidy\ngit diff --exit-code\n"
+            },
+            {
+               "name": "Run Go tests",
+               "run": "set -xu\ngo test ./...\n"
+            },
+            {
+               "name": "Run golangci linting",
+               "uses": "golangci/golangci-lint-action@v3.2.0",
+               "with": {
+                  "skip-cache": true,
+                  "version": "v1.46.2"
+               }
+            }
+         ]
+      }
+   },
+   "name": "CI2",
+   "on": {
+      "push": {
+         "paths": [
+            "**"
+         ]
+      }
+   }
+}

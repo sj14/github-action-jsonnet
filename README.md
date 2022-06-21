@@ -1,3 +1,3 @@
 # github-action-jsonnet
 
-jsonnet .github/workflows/ci.jsonnet --output-file .github/workflows/ci.yml
+jsonnet --multi .github/workflows .github/workflows/ci.jsonnet

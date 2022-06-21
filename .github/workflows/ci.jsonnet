@@ -69,9 +69,15 @@ local worfklow(name, on, jobs) = {
   jobs: jobs,
 };
 
-
-worfklow(
-    name="CI", 
-    on=on_push_paths(["**"]),
-    jobs=job_go_tests(),
+{
+    "workflow1.yml": worfklow(
+        name="CI", 
+        on=on_push_paths(["**"]),
+        jobs=job_go_tests(),
+    ),
+    "workflow2.yml": worfklow(
+        name="CI2", 
+        on=on_push_paths(["**"]),
+        jobs=job_go_tests(),
     )
+}
