@@ -34,7 +34,7 @@
          ]
       }
    },
-   "name": "CI",
+   "name": "CI1",
    "on": {
       "push": {
          "paths": [
