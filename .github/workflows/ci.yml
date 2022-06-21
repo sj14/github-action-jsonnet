@@ -1,7 +1,7 @@
 {
    "jobs": {
       "go-tests": {
-         "runs-on": "self-hosted",
+         "runs-on": null,
          "steps": [
             {
                "name": "Checkout repository",
@@ -26,7 +26,6 @@
    "on": {
       "push": {
          "paths": [
-            "**",
             "**"
          ]
       }

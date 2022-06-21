@@ -22,9 +22,9 @@ local step_check_go_modules() = {
     |||
 };
 
-local job_go_tests() = {
+local job_go_tests(runs_on=null,) = {
     "go-tests": {
-        "runs-on": "self-hosted",
+        "runs-on": runs_on,
         steps: [
             step_checkout(),
             step_setup_go(),
@@ -49,6 +49,6 @@ local worfklow(name, on, jobs) = {
 
 worfklow(
     name="CI", 
-    on=on_push_paths(["**", "***"]),
+    on=on_push_paths(["**"]),
     jobs=job_go_tests(),
     )
